@@ -2,6 +2,7 @@
   "name": "vscode-pyenv",
   "displayName": "vscode-pyenv",
   "description": "",
+  "publisher": "Solorzano-JuanJose",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.97.0"
@@ -11,6 +12,10 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JuanJoseSolorzano/vscode_pyenv"
+  },
   "contributes": {
     "commands": [
       {
