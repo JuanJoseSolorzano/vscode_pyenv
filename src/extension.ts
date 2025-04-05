@@ -1,54 +1,59 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { header_content,debug_content,FillCodeFile,pyenv_content,getCurrentPythonInterpreter,setPyenvFile} from './utils';
+import { HEADER_CONTENT,DEBUG_CONTENT,PYENV_CONTENT,VsCodeWorkspaceCreator} from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
 
 	const disposable = vscode.commands.registerCommand('vscode-pyenv.set_pyenv', () => {
+		// Entry point for the extension
 		vscode.window.showInformationMessage('Creating a new Python file with header and debug configuration...');
 		const folders = vscode.workspace.workspaceFolders;
 		if (!folders) {
 			vscode.window.showErrorMessage('No workspace folder found.');
 			return;
 		}
-		const content:string[] = [];
-		content.push(header_content);
+		const file_content:string[] = [];
+		file_content.push(HEADER_CONTENT);
 		// Create a new file with the header and debug configuration
-		let workspace = new FillCodeFile('test.py');
-		const workspaceFolder = folders[0].uri.fsPath;
-		const main_folder_name = path.basename(workspaceFolder);
-		const workspace_root_path = path.join(workspaceFolder, `${main_folder_name}.code-workspace`);
-		workspace.target_paths.then((target_paths) => {
+		let vscodeWorkpace = new VsCodeWorkspaceCreator();
+		const root_workspace_path = folders[0].uri.fsPath; // path like: 'c:\users\user\workspace'
+		const target_folder_name = path.basename(root_workspace_path);
+		const workspace_root_path = path.join(root_workspace_path, `${target_folder_name}.code-workspace`);
+		// Gets the paths from the workspace
+		vscodeWorkpace.target_paths.then((target_paths) => {
 		if (target_paths.length > 0) {
+			// store the paths in the content array to fill the workspace file.
 			for(let i=0; i<target_paths.length; i++){
 				const file_dir = path.dirname(target_paths[i]);
 				let file_path = file_dir.toString().replace(/\\/g, '/');
 				let file_path_name = '		"'+file_path+'",';
-				let _workspace = workspaceFolder.replace(/\\/g, '/');
+				let _workspace = root_workspace_path.replace(/\\/g, '/');
 				let rel_path = file_path_name.replace(_workspace,"${workspace}");
-				if(!content.includes(rel_path)){
-					content.push(rel_path);
+				// Just add the path if it is not already in the file_content array
+				if(!file_content.includes(rel_path)){
+					file_content.push(rel_path);
 				}
 			}
-			content.push('		],');
+			file_content.push('		],'); // add the end of the configuration.
 		} else {
 			vscode.window.showErrorMessage('No Python files found in the workspace.');
 		}
-		    content.push(pyenv_content);
-			content.push(debug_content);
-			fs.writeFileSync(workspace_root_path, content.join("\n"), { flag: 'w', encoding: 'utf-8' });
+		    file_content.push(PYENV_CONTENT); // add the pyenv configuration into the array.
+			file_content.push(DEBUG_CONTENT); // add the debug configuration into the array.
+			// File creation.
+			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
-		getCurrentPythonInterpreter().then((interpreterPath) => {
+		// Get the Python interpreter path and create the pyenv.py file.
+		vscodeWorkpace.getCurrentPythonInterpreter().then((interpreterPath) => {
 			if (interpreterPath) {
 				const py_path = path.dirname(interpreterPath).toString()+'\\Lib';
-				setPyenvFile(py_path);
+				vscodeWorkpace.setPyenvFile(py_path);
 			} else {
 				vscode.window.showErrorMessage('No Python interpreter found.');
 			}
 		});
-
 	});
 	context.subscriptions.push(disposable);
 }
