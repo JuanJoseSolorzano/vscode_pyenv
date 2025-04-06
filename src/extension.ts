@@ -29,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 				let file_path = file_dir.toString().replace(/\\/g, '/');
 				let file_path_name = '		"'+file_path+'",';
 				let _workspace = root_workspace_path.replace(/\\/g, '/');
-				let rel_path = file_path_name.replace(_workspace,"${workspace}");
+				let rel_path = file_path_name.replace(_workspace,"${workspaceFolder}");
 				// Just add the path if it is not already in the file_content array
 				if(!file_content.includes(rel_path)){
 					file_content.push(rel_path);
