@@ -132,7 +132,6 @@ def getSuiteRootPath(start_dir=os.getcwd()):
         current_dir = os.path.dirname(current_dir)
         for file in os.listdir(current_dir):
             if fnmatch.fnmatch(file, "*.code-workspace"):
-                print(current_dir)
                 root_path = current_dir
                 break
     return root_path 
@@ -158,7 +157,7 @@ if __name__ == "__main__":
     try:
         runpy.run_path(target, run_name="__main__")
     except Exception as e:
-        print(f"Error while executing the script: {e}")`
+        print(f"Error while executing the script: {e}")`;
 
 /**
  * Description: This class is used to create a new Python file with a header and debug configuration.
