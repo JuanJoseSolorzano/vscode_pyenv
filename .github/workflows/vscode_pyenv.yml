@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vsix-artifact # Name of the artifact to be uploaded
-          path: ${{ env.VSIX_FILE }}  # Use the environment variable set in the previous step
+          path: ${{ env.VSIX_FILE }} # Use the environment variable set in the previous step
 #NOTE:
 # Between jobs (build and release), either dependencies or repository files are shared, so, it is necessary 
 # to checkout the repository again in the release job.
