@@ -3,6 +3,10 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { HEADER_CONTENT,DEBUG_CONTENT,PYENV_CONTENT,VsCodeWorkspaceCreator} from './utils';
 
+//FIXME: This should be in a config file or something like that.
+const EXCLUDE_FOLDERS = ['bin', 'report', 'results', 'logs', 'build', '__pycache__']; // Folders to exclude from the workspace file
+
+
 export function activate(context: vscode.ExtensionContext) {
 
 	const disposable = vscode.commands.registerCommand('vscode-pyenv.set_pyenv', () => {
@@ -31,7 +35,8 @@ export function activate(context: vscode.ExtensionContext) {
 				let _workspace = root_workspace_path.replace(/\\/g, '/');
 				let rel_path = file_path_name.replace(_workspace,"${workspaceFolder}");
 				// Just add the path if it is not already in the file_content array
-				if(!file_content.includes(rel_path)){
+				if(!file_content.includes(rel_path) && !EXCLUDE_FOLDERS.some(folder => file_path.includes(folder))){
+					// Check if the path is not in the exclude folders
 					file_content.push(rel_path);
 				}
 			}
