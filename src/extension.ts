@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if(!file_content.includes(rel_path) && !EXCLUDE_FOLDERS.some(folder => file_path.includes(folder))){
 					// Check if the path is not in the exclude folders
 					file_content.push(rel_path);
-					env_file_content.push(file_dir);
+					env_file_content.push(file_path);
 				}
 			}
 			file_content.push('		],'); // add the end of the configuration.
