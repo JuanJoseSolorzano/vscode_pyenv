@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// File creation.
 			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
 			fs.writeFileSync(env_file_name, env_file_content.join(";"), { flag: 'w', encoding: 'utf-8' });
-			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
+			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), { forceNewWindow: false });
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
 		vscodeWorkpace.getCurrentPythonInterpreter().then((interpreterPath) => {
