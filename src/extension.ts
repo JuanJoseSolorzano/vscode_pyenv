@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 		let vscodeWorkpace = new VsCodeWorkspaceCreator();
 		const root_workspace_path = folders[0].uri.fsPath; // path like: 'c:\users\user\workspace'
 		const target_folder_name = path.basename(root_workspace_path);
-		const env_file_name = path.join(root_workspace_path, `${target_folder_name}.env`);
+		const env_file_name = path.join(root_workspace_path, `.env`);
 		const workspace_root_path = path.join(root_workspace_path, `${target_folder_name}.code-workspace`);
 		env_file_content.push('PYTHONPATH="')
 		// Gets the paths from the workspace
@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 			env_file_content.push('"')
 			// File creation.
 			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
-			fs.writeFileSync(env_file_name, env_file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
+			fs.writeFileSync(env_file_name, env_file_content, { flag: 'w', encoding: 'utf-8' });
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
