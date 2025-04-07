@@ -159,7 +159,7 @@ if __name__ == "__main__":
     try:
         runpy.run_path(target, run_name="__main__")
     except Exception as e:
-        print(f"Error while executing the script: \n\t{e}")`;
+        print(f"Error while executing the script: \\n\\t{e}")`;
 
 /**
  * Description: This class is used to create a new Python file with a header and debug configuration.
