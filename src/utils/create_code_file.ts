@@ -152,12 +152,14 @@ if __name__ == "__main__":
     if not os.path.isfile(target):
         print("Error: The file %s does not exist."%target)
         sys.exit(1)
-    setSysPath((getAllPaths(getSuiteRootPath())))
+    suite_root_path = getSuiteRootPath()
+    all_paths = getAllPaths(suite_root_path)
+    setSysPath(all_paths)
     # Execute the external script using runpy for better safety and efficiency
     try:
         runpy.run_path(target, run_name="__main__")
     except Exception as e:
-        print(f"Error while executing the script: {e}")`;
+        print(f"Error while executing the script: \n\t{e}")`;
 
 /**
  * Description: This class is used to create a new Python file with a header and debug configuration.

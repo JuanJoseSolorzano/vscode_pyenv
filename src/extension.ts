@@ -51,6 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
+		//fs.writeFileSync(workspace_root_path, env_file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
 		vscodeWorkpace.getCurrentPythonInterpreter().then((interpreterPath) => {
 			if (interpreterPath) {
 				const py_path = path.dirname(interpreterPath).toString()+'\\Lib';
