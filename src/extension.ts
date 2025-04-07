@@ -18,12 +18,15 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 		const file_content:string[] = [];
+		const env_file_content:string[] = [];
 		file_content.push(HEADER_CONTENT);
 		// Create a new file with the header and debug configuration
 		let vscodeWorkpace = new VsCodeWorkspaceCreator();
 		const root_workspace_path = folders[0].uri.fsPath; // path like: 'c:\users\user\workspace'
 		const target_folder_name = path.basename(root_workspace_path);
+		const env_file_name = path.join(root_workspace_path, `${target_folder_name}.env`);
 		const workspace_root_path = path.join(root_workspace_path, `${target_folder_name}.code-workspace`);
+		env_file_content.push('PYTHONPATH="')
 		// Gets the paths from the workspace
 		vscodeWorkpace.target_paths.then((target_paths) => {
 		if (target_paths.length > 0) {
@@ -38,6 +41,8 @@ export function activate(context: vscode.ExtensionContext) {
 				if(!file_content.includes(rel_path) && !EXCLUDE_FOLDERS.some(folder => file_path.includes(folder))){
 					// Check if the path is not in the exclude folders
 					file_content.push(rel_path);
+					let env_path = target_paths[i]+";"
+					env_file_content.push(env_path);
 				}
 			}
 			file_content.push('		],'); // add the end of the configuration.
@@ -46,8 +51,10 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		    file_content.push(PYENV_CONTENT); // add the pyenv configuration into the array.
 			file_content.push(DEBUG_CONTENT); // add the debug configuration into the array.
+			env_file_content.push('"')
 			// File creation.
 			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
+			fs.writeFileSync(env_file_name, env_file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
