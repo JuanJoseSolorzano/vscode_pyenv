@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 			file_content.push(DEBUG_CONTENT); // add the debug configuration into the array.
 			// File creation.
 			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
-			fs.writeFileSync(workspace_root_path, file_env_content, { flag: 'w', encoding: 'utf-8' });
+			fs.writeFileSync(workspace_root_path, file_env_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
