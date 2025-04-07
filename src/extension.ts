@@ -41,8 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if(!file_content.includes(rel_path) && !EXCLUDE_FOLDERS.some(folder => file_path.includes(folder))){
 					// Check if the path is not in the exclude folders
 					file_content.push(rel_path);
-					let env_path = target_paths[i]+";"
-					env_file_content.push(env_path);
+					env_file_content.push(target_paths[i]);
 				}
 			}
 			file_content.push('		],'); // add the end of the configuration.
@@ -54,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 			env_file_content.push('"')
 			// File creation.
 			fs.writeFileSync(workspace_root_path, file_content.join("\n"), { flag: 'w', encoding: 'utf-8' });
-			fs.writeFileSync(env_file_name, env_file_content, { flag: 'w', encoding: 'utf-8' });
+			fs.writeFileSync(env_file_name, env_file_content.join(";"), { flag: 'w', encoding: 'utf-8' });
 			vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(workspace_root_path), true);
 		});
 		// Get the Python interpreter path and create the pyenv.py file.
