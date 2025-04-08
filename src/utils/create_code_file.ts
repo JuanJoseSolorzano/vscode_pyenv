@@ -129,7 +129,7 @@ def getSuiteRootPath(start_dir=os.getcwd()):
     levels = 50  # Number of levels to go up
     root_path = None
     for _ in range(levels):
-        current_dir = os.path.dirname(current_dir)
+        #current_dir = os.path.dirname(current_dir)
         for file in os.listdir(current_dir):
             if fnmatch.fnmatch(file, "*.code-workspace"):
                 root_path = current_dir
