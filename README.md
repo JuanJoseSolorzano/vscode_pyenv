@@ -1,6 +1,6 @@
-# 🚀 VSCode PyEnv Extension
+# 🚀 VSCode Python Environment Manager
 
-The **VSCode PyEnv** extension automates the creation of a Visual Studio Code workspace file for Python projects. It simplifies the process of configuring Python paths, debugging settings, and environment variables for your workspace.
+The **VSCode Python Environment Manager** extension automates the creation of a Visual Studio Code workspace file for Python projects. It simplifies the process of configuring Python paths, debugging settings, and environment variables for your workspace.
 
 ## ✨ Features
 
@@ -11,25 +11,20 @@ The **VSCode PyEnv** extension automates the creation of a Visual Studio Code wo
 - 🐞 Configures debugging settings for Python files.
 - 🧠 Automatically detects the active Python interpreter.
 
-## 📥 Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-repo/vscode_pyenv.git
-   ```
-2. Open the repository in Visual Studio Code.
-3. Run `npm install` to install dependencies.
-4. Press `F5` to launch the extension in a new Extension Development Host window.
-
 ## 🛡️ Usage
 
 1. Open a Python project in Visual Studio Code.
-2. Run the command **`vscode-pyenv.set_pyenv`** from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`).
+2. Run the **`Set Python Environment`** command from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`), or `right-click` within the Explorer view and select **`Set Python Environment`** from the context menu.
+2. Run the command  from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) Or right-click on the Explorer view and select the option `Set Python Environment`
 3. The extension will:
    - 📂 Create a `.code-workspace` file in the root of your workspace.
    - 🌐 Generate a `.env` file with the `PYTHONPATH` variable.
    - 📝 Create a `pyenv.py` script in the Python interpreter's `Lib` directory.
 4. The workspace file will be opened automatically in Visual Studio Code.
+
+![Alt text](./images/example_1.png)
+
+![Alt text](./images/example_2.png)
 
 ## ⚙️ Configuration
 
@@ -43,16 +38,13 @@ The following folders are excluded from the workspace configuration by default:
 - `build`
 - `__pycache__`
 
-You can modify the `EXCLUDE_FOLDERS` array in `src/extension.ts` to customize this behavior.
+You can modify the `EXCLUDE_FOLDERS` array in the extension settings to customize this behavior:
+
+![Alt text](./images/example_3.png)
 
 ### 🐍 Python Interpreter
 
 The extension automatically detects the active Python interpreter using the Python extension (`ms-python.python`). Ensure the Python extension is installed and activated in your Visual Studio Code.
-
-## 📂 File Structure
-
-- **`src/utils/create_code_file.ts`**: Contains utility functions and classes for creating workspace files and managing Python paths.
-- **`src/extension.ts`**: Entry point for the extension. Handles the command registration and main logic.
 
 ## 📜 License
 
@@ -61,5 +53,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 👨‍💻 Author
 
 **Juan Jose Solorzano**  
-Copyright (c) 2023
+Copyright (c) 2025
 
