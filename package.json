@@ -24,6 +24,20 @@
         "title": "Set Python Environment"
       }
     ],
+    "configuration": {
+      "type": "object",
+      "title": "Excluded Folders Configuration",
+      "properties": {
+      "vscode-pyenv.excludedFolders": {
+        "type": "array",
+        "items": {
+        "type": "string"
+        },
+        "default": ["bin", "report", "results", "logs", "build", "__pycache__"],
+        "description": "List of folder paths to exclude from operations."
+      }
+      }
+    },
     "menus": {
       "explorer/context": [
         {

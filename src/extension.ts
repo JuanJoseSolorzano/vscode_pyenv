@@ -3,12 +3,10 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { HEADER_CONTENT,DEBUG_CONTENT,PYENV_CONTENT,VsCodeWorkspaceCreator} from './utils';
 
-//FIXME: This should be in a config file or something like that.
-const EXCLUDE_FOLDERS = ['bin', 'report', 'results', 'logs', 'build', '__pycache__']; // Folders to exclude from the workspace file
-
-
+// Entry point for the extension.
 export function activate(context: vscode.ExtensionContext) {
-
+ 	// Folders to exclude from the workspace file
+	const EXCLUDE_FOLDERS = vscode.workspace.getConfiguration('vscode-pyenv').get<string[]>('excludeFolders');
 	const disposable = vscode.commands.registerCommand('vscode-pyenv.set_pyenv', () => {
 		// Entry point for the extension
 		vscode.window.showInformationMessage('Creating a new Python file with header and debug configuration...');
