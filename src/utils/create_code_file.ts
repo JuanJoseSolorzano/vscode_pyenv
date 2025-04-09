@@ -129,7 +129,7 @@ def getSuiteRootPath(start_dir=os.getcwd()):
     levels = 50  # Number of levels to go up
     root_path = None
     for _ in range(levels):
-        #current_dir = os.path.dirname(current_dir) ISSUE Found in this line
+        #current_dir = os.path.dirname(current_dir) #BUG: This line fails during testing, it was commented out.
         for file in os.listdir(current_dir):
             if fnmatch.fnmatch(file, "*.code-workspace"):
                 root_path = current_dir
