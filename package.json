@@ -3,7 +3,7 @@
   "displayName": "VSCode Python Environment Manager",
   "description": "",
   "publisher": "Solorzano-JuanJose",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.97.0"
