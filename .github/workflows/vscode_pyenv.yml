@@ -93,9 +93,9 @@ jobs:
         continue-on-error: false  # Fail the job if vsce is not installed correctly
       # Publishing the extension to the VSCode Marketplace.
       - name: Publish to VS Code Marketplace
-        run: vsce publish --pat "${{ secrets.EXTENSIONBUILDREPO }}" # EXTENSIONBUILDREPO is a secret stored in the repository settings (Repository secrets)
+        run: vsce publish --pat "${{ secrets.BUILD_VSCE }}" # EXTENSIONBUILDREPO is a secret stored in the repository settings (Repository secrets)
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.EXTENSIONBUILDREPO }}
+          NODE_AUTH_TOKEN: ${{ secrets.BUILD_VSCE }}
         continue-on-error: false  # Fail the job if publishing fails
         
   release:
