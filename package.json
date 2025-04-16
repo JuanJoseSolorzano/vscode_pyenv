@@ -1,9 +1,9 @@
 {
   "name": "vscode-pyenv",
-  "displayName": "VSCode Python Environment Manager",
+  "displayName": "Python Environment",
   "description": "",
   "publisher": "Solorzano-JuanJose",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.97.0"
