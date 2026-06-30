@@ -1,86 +1,88 @@
 {
-  "name": "vscode-pyenv",
-  "displayName": "Python Environment (VSCode)",
-  "description": "",
-  "publisher": "Solorzano-JuanJose",
-  "version": "1.3.2",
-  "icon": "images/icon.png",
-  "engines": {
-    "vscode": "^1.97.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./dist/extension.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JuanJoseSolorzano/vscode_pyenv"
-  },
-  "contributes": {
-    "commands": [
-      {
-        "command": "vscode-pyenv.set_pyenv",
-        "title": "Set Python Environment"
-      }
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "Excluded Folders Configuration",
-      "properties": {
-        "vscode-pyenv.excludedFolders": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": [
-            "bin",
-            "report",
-            "results",
-            "logs",
-            "build",
-            "__pycache__"
-          ],
-          "description": "List of folder paths to exclude from operations."
-        }
-      }
+    "name": "tdr-python-environment",
+    "displayName": "[TDR] Create Python Environment",
+    "description": "A Visual Studio Code extension to create the Python environment for the current workspace.",
+    "version": "0.0.2",
+    "publisher": "JuanJoseSolorzanoCarrillo",
+    "icon": "images/icon.png", 
+    "repository": {
+        "type": "git",
+        "url": "https://github.vitesco.io/sg922674/vscode_pyenvironment"
     },
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "vscode-pyenv.set_pyenv",
-          "when": "resourceScheme == 'file'",
-          "group": "navigation"
+    "engines": {
+        "vscode": "^1.105.0"
+    },
+    "categories": [
+        "Testing"
+    ],
+    "activationEvents": [
+        "onCommand:tdr-python-environment.setPythonEnvironment"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "command": "tdr-python-environment.setPythonEnvironment",
+                "title": "[TDR] Create Python Environment"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "tdr-python-environment.setPythonEnvironment",
+                    "when": "resourceScheme == 'file'",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Excluded Folders",
+            "properties": {
+                "ta-python-environment.excludedFolders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "out",
+                        ".vscode",
+                        ".git",
+                        ".github",
+                        "__pycache__"
+                    ],
+                    "description": "List of folders to exclude from the search for Python files."
+                }
+            }
         }
-      ]
+    },
+    "extensionDependencies": [
+        "ms-python.python"
+    ],
+    "main": "./dist/main.js",
+    "files": [
+        "dist/main.js",
+        "images/",
+        "README.md",
+        "LICENSE.md"
+    ],
+    "scripts": {
+        "compile": "npm run check-types && node esbuild.js",
+        "check-types": "tsc --noEmit",
+        "watch": "npm-run-all -p watch:*",
+        "watch:esbuild": "node esbuild.js --watch",
+        "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+        "vscode:prepublish": "npm run package",
+        "package": "npm run check-types && node esbuild.js --production"
+    },
+    "dependencies": {
+        "@types/node": "^20.4.2"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.105.0",
+        "@vscode/vsce": "^3.9.2",
+        "esbuild": "^0.28.1",
+        "typescript": "^6.0.3",
+        "webpack": "^5.108.1",
+        "webpack-cli": "^7.1.0"
     }
-  },
-  "extensionDependencies": [
-    "ms-python.python"
-  ],
-  "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.97.0",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.23.0",
-    "ts-loader": "^9.5.2",
-    "typescript": "^5.8.3",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1"
-  }
 }
