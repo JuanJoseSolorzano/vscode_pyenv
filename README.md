@@ -61,6 +61,15 @@ git clone --depth=1 https://github.com/JuanJoseSolorzano/VscodePythonEnvironment
 
 ## ⚙️ Configuration
 
+### Type Cheking Mode
+
+In the .code-workspace file, you can set the `python.analysis.typeCheckingMode` property to one of the following values:
+- `off`: Disables type checking.
+- `basic`: Enables basic type checking.
+- `strict`: Enables strict type checking.
+
+**By default**, the type checking mode is set to `off`.
+
 ### 🗂️ Excluded Folders
 
 The following folders are excluded from the workspace configuration by default:
