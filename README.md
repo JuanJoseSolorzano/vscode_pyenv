@@ -16,6 +16,8 @@ The extension also creates an AI AGENT specific for the Python projects, which c
 
 ## 🛡️ Usage
 
+[![Demo](./demo.gif)]
+
 1. Open a Python project in Visual Studio Code.
 2. Run the **`Create Python Environment`** command from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`), or `right-click` within the Explorer view and select **`Create Python Environment`** from the context menu.
 3. Run the command  from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) Or right-click on the Explorer view and select the option `Create Python Environment`
