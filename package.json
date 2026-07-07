@@ -2,12 +2,12 @@
     "name": "tdr-python-environment",
     "displayName": "[TDR] Create Python Environment",
     "description": "A Visual Studio Code extension to create the Python environment for the current workspace.",
-    "version": "0.0.2",
+    "version": "1.0.1",
     "publisher": "JuanJoseSolorzanoCarrillo",
-    "icon": "images/icon.png",
+    "icon": "images/icon.png", 
     "repository": {
         "type": "git",
-        "url": "https://github.com/JuanJoseSolorzano/vscode_pyenv"
+        "url": "https://github.vitesco.io/sg922674/vscode_pyenvironment"
     },
     "engines": {
         "vscode": "^1.105.0"
@@ -60,6 +60,7 @@
     ],
     "main": "./dist/main.js",
     "files": [
+        "resources/",
         "dist/main.js",
         "images/",
         "README.md",
@@ -74,8 +75,10 @@
         "vscode:prepublish": "npm run package",
         "package": "npm run check-types && node esbuild.js --production"
     },
+    "dependencies": {
+        "@types/node": "^20.4.2"
+    },
     "devDependencies": {
-        "@types/node": "^26.0.1",
         "@types/vscode": "^1.105.0",
         "@vscode/vsce": "^3.9.2",
         "esbuild": "^0.28.1",

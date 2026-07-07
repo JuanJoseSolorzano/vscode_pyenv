@@ -1,13 +1,16 @@
 # 🚀 VSCode TDR Python Environment Manager
 
 The **VSCode [TDR] Python Environment Manager** extension automates the creation of a Visual Studio Code workspace file for Python projects. It simplifies the process of configuring Python paths, debugging settings, and environment variables for your workspace.
+The extension also creates an AI AGENT specific for the TDR projects, which can be used to assist with Python development tasks.
 
 ## ✨ Features
 
+- 🧠 Incorporate a AI AGENT for TDR projects.
 - 🔍 Automatically scans the workspace for Python files and adds their paths to the workspace configuration.
 - 🚫 Excludes specific folders (e.g., `__pycache__`, `out`, `.git`) from the workspace.
 - 📄 Generates a `.env` file with the `PYTHONPATH` variable for easy environment configuration to be able to debug any Python script.
 - 🛠️ Creates a `pyenv.py` script to manage Python environment paths and execute scripts.
+- 📝 Generates a `TA` code snippet to automate the Copyright and the `TA` Python scripts.
 - 🐞 Configures debugging settings for Python files.
 - 🧠 Automatically detects the active Python interpreter.
 
@@ -21,20 +24,40 @@ The **VSCode [TDR] Python Environment Manager** extension automates the creation
    - 🌐 Generate a `.env` file with the `PYTHONPATH` variable.
    - 📝 Create a `pyenv.py` script in the Python interpreter's `Lib` directory.
 5. The workspace file will be opened automatically in Visual Studio Code.
+6. In the chat, look for the TA AGENT as `TA` select it and start asking questions about your Python project.
 
-### 🔍  To see how configure the extension, see the images from: [README.md](README.md)
+## 🛠️ AGENT Configuration:
+
+- The agent incorporates the caveman AI specifications, you can select the caveman by typing in the chat: 
+```bash
+/caveman full ->  (dafault) fragments ok, drop articles, short words. Classic caveman
+/caveman lite ->  short sentences, no filler, keep grammar
+/caveman ultra ->  Abbreviate (DB/auth/config/req/res/fn/impl), fragments, abbrev (db/api/req/res/fn), arrows (→), minimal words
+```
+
+## 📝 Code snipet for TA:
+
+   - At the top of your file, type: `copyt` for Python or `copyc` for C files.
+   - By taping `libinit` the code snippet will create a template for the `TA` Python script, which will include the copyright and the `TA` class.
 
 ## How to install:
 Run the following command: 
 
 **PowerShell**
 ```bash
-git clone --depth=1 https://github.vitesco.io/sg922674/vscode_pyenvironment; code --install-extension vscode_pyenvironment/EXTENSION.vsix; rm -Recurse -Force vscode_pyenvironment
+git clone --depth=1 https://github.vitesco.io/sg922674/vscode_pyenvironment; C:\LegacyApp\VSCode\bin\code.cmd --install-extension vscode_pyenvironment/EXTENSION.vsix; rm -Recurse -Force vscode_pyenvironment
 ```
 **Git Bash**
 ```bash
-git clone --depth=1 https://github.vitesco.io/sg922674/vscode_pyenvironment && code --install-extension vscode_pyenvironment/EXTENSION.vsix && rm -rf vscode_pyenvironment
+git clone --depth=1 https://github.vitesco.io/sg922674/vscode_pyenvironment && C:\LegacyApp\VSCode\bin\code.cmd --install-extension vscode_pyenvironment/EXTENSION.vsix && rm -rf vscode_pyenvironment
 ```
+
+**Manual Installation**
+1. Download the latest release of the extension from the [Releases](https://github.vitesco.io/sg922674/vscode_pyenvironment/releases) page.
+2. Open Visual Studio Code.
+3. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
+4. Click on the three-dot menu in the top-right corner of the Extensions view and select "Install from VSIX..."
+5. Navigate to the downloaded `.vsix` file and click "Open" to install the extension.
 
 ## ⚙️ Configuration
 

@@ -19,6 +19,18 @@ async function setPythonEnvironment(): Promise<void> {
             code.window.showErrorMessage("No Python interpreter found. Please ensure that Python is installed and added to your system PATH.");
         }
     });
+    // Create the TA snippets file.
+    pythonEnv.createSnippetsFiles().then(()=>{
+        /* do nothing */
+    }).catch((error)=>{
+        code.window.showErrorMessage(`Failed to create TA snippets files: ${error.message}`);
+    });
+    // Create the TA agent file.
+    pythonEnv.createAgentFile().then(()=>{
+        /* do nothing */
+    }).catch((error)=>{
+        code.window.showErrorMessage(`Failed to create TA agent file: ${error.message}`);
+    });
 }
 
 // Main entry point for the extension
