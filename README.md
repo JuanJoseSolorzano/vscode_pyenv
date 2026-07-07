@@ -16,7 +16,7 @@ The extension also creates an AI AGENT specific for the Python projects, which c
 
 ## 🛡️ Usage
 
-[![Demo](./demo.gif)]
+![Demo](./images/demo.gif)
 
 1. Open a Python project in Visual Studio Code.
 2. Run the **`Create Python Environment`** command from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`), or `right-click` within the Explorer view and select **`Create Python Environment`** from the context menu.
@@ -26,7 +26,9 @@ The extension also creates an AI AGENT specific for the Python projects, which c
    - 🌐 Generate a `.env` file with the `PYTHONPATH` variable.
    - 📝 Create a `pyenv.py` script in the Python interpreter's `Lib` directory.
 5. The workspace file will be opened automatically in Visual Studio Code.
-6. In the chat, look for the TA AGENT as `TA` select it and start asking questions about your Python project.
+6. In the chat, look for the TA AGENT as `Python Env` select it and start asking questions about your Python project.
+
+![Python Env AGENT](./images/PythonEnvAgent.png)
 
 ## 🛠️ AGENT Configuration:
 

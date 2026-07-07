@@ -155,7 +155,7 @@ export class PythonEnvironment {
     }
 
     public async createAgentFile(): Promise<void> {
-        const agentName = "TA.agent.md";
+        const agentName = "PythonEnv.agent.md";
         const moduleResourcesFolder = "resources";
         const sourceAgentFolder = path.join(__dirname, '..', moduleResourcesFolder);
         const sourceAgentPath = path.join(sourceAgentFolder, agentName);
