@@ -45,15 +45,15 @@ Run the following command:
 
 **PowerShell**
 ```bash
-git clone --depth=1 https://github.com/JuanJoseSolorzano/vscode_pyenv.git; C:\LegacyApp\VSCode\bin\code.cmd --install-extension vscode_pyenv/python-environment.vsix; rm -Recurse -Force vscode_pyenv
+git clone --depth=1 https://github.com/JuanJoseSolorzano/VscodePythonEnvironment.git; C:\LegacyApp\VSCode\bin\code.cmd --install-extension VscodePythonEnvironment/python-environment.vsix; rm -Recurse -Force VscodePythonEnvironment
 ```
 **Git Bash**
 ```bash
-git clone --depth=1 https://github.com/JuanJoseSolorzano/vscode_pyenv.git && C:\LegacyApp\VSCode\bin\code.cmd --install-extension vscode_pyenv/python-environment.vsix && rm -rf vscode_pyenv
+git clone --depth=1 https://github.com/JuanJoseSolorzano/VscodePythonEnvironment.git && C:\LegacyApp\VSCode\bin\code.cmd --install-extension VscodePythonEnvironment/python-environment.vsix && rm -rf VscodePythonEnvironment
 ```
 
 **Manual Installation**
-1. Download the latest release of the extension from the [Releases](https://github.com/JuanJoseSolorzano/vscode_pyenv/releases) page.
+1. Download the latest release of the extension from the [Releases](https://github.com/JuanJoseSolorzano/VscodePythonEnvironment/releases) page.
 2. Open Visual Studio Code.
 3. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
 4. Click on the three-dot menu in the top-right corner of the Extensions view and select "Install from VSIX..."
