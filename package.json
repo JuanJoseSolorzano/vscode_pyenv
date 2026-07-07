@@ -2,7 +2,7 @@
     "name": "python-environment",
     "displayName": "Create Python Environment",
     "description": "A Visual Studio Code extension to create the Python environment for the current workspace.",
-    "version": "1.0.1",
+    "version": "2.0.1",
     "publisher": "JuanJoseSolorzanoCarrillo",
     "icon": "images/icon.png", 
     "repository": {
